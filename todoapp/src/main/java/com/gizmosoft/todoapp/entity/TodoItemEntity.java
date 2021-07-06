@@ -1,26 +1,24 @@
 package com.gizmosoft.todoapp.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "items")
 public class TodoItemEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
-    @NotBlank
+    @NotNull
     private String title;
-    private boolean done;
+    private int done;
 
     public TodoItemEntity(){
 
     }
 
-    public TodoItemEntity(int id, String title, boolean done) {
+    public TodoItemEntity(int id, String title, int done) {
         this.id = id;
         this.title = title;
         this.done = done;
@@ -42,11 +40,10 @@ public class TodoItemEntity {
         this.title = title;
     }
 
-    public boolean isDone() {
+    public int isDone() {
         return done;
     }
 
-    public void setDone(boolean done) {
-        this.done = done;
+    public void setDone(int done) { this.done = done;
     }
 }

@@ -3,7 +3,7 @@ package com.gizmosoft.todoapp.bean;
 public class TodoItemBean {
     private int id;
     private String title;
-    private boolean done;
+    private int done;
 
     public int getId() {
         return id;
@@ -21,11 +21,11 @@ public class TodoItemBean {
         this.title = title;
     }
 
-    public boolean isDone() {
+    public int isDone() {
         return done;
     }
 
-    public void setDone(boolean done) {
+    public void setDone(int done) {
         this.done = done;
     }
 

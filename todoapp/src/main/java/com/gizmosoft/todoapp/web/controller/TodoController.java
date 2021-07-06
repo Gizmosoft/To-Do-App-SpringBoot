@@ -1,4 +1,4 @@
-package com.gizmosoft.todoapp.controller;
+package com.gizmosoft.todoapp.web.controller;
 
 import com.gizmosoft.todoapp.bean.TodoItemBean;
 import com.gizmosoft.todoapp.service.TodoServiceImpl;
