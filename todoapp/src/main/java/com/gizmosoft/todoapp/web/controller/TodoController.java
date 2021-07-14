@@ -24,4 +24,10 @@ public class TodoController {
         List<TodoItemBean> listTodo = new ArrayList<TodoItemBean>(todoServiceImpl.getAllItem());
         return new ResponseEntity<List<TodoItemBean>>(listTodo, HttpStatus.OK);
     }
+
+    @RequestMapping("/")
+    public String index() {
+        System.out.println("Looking in the index controller.........");
+        return "index";
+    }
 }
