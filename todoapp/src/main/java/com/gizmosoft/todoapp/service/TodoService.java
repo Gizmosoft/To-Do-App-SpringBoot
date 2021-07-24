@@ -7,4 +7,5 @@ import java.util.Collection;
 public interface TodoService {
 
     Collection<TodoItemBean> getAllItem();
+    Collection<Integer> getStatus();
 }

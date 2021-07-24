@@ -8,12 +8,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/todo")
+//@RequestMapping(value = "/todo")
 public class TodoController {
 
     @Autowired
@@ -25,9 +26,18 @@ public class TodoController {
         return new ResponseEntity<List<TodoItemBean>>(listTodo, HttpStatus.OK);
     }
 
-    @RequestMapping("/")
-    public String index() {
-        System.out.println("Looking in the index controller.........");
-        return "index";
+    @RequestMapping(value = "/getStatus", method = RequestMethod.GET)
+    public ResponseEntity<List<Integer>> getTodoListStatus() throws Exception{
+        List<Integer> listStatus = new ArrayList<Integer>(todoServiceImpl.getStatus());
+        return new ResponseEntity<List<Integer>>(listStatus, HttpStatus.OK);
     }
+
+    @RequestMapping(value="/")
+    public ModelAndView getIndex() {
+        System.out.println("Looking in the index controller.........");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("index.html");
+        return modelAndView;
+    }
+
 }
