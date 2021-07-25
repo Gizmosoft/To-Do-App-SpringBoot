@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
 </head>
 <body>
-    This is a test landing page!
+<center>
+    <h1>Welcome to the To-Do App!</h1>
+    <h4>Your Todo List for the day is below...</h4>
+</center>
+<!--    Displaying the data from the database in a Tabular form  -->
+    <table>
+        <tr th:each="l : ${list}">
+            <td th:text="${l.id}"></td>
+            <td th:text="${l.title}"></td>
+        </tr>
+    </table>
+
 </body>
 </html>

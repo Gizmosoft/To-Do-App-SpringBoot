@@ -17,7 +17,4 @@ public class TodoServiceImpl implements TodoService{
         return todoDaoWrapper.findAll();
     }
 
-    public Collection<Integer> getStatus(){
-        return todoDaoWrapper.getDoneStatus();
-    }
 }

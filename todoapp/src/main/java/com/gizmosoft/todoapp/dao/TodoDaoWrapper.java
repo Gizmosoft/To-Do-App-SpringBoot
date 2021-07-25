@@ -15,22 +15,6 @@ public class TodoDaoWrapper{
     @Autowired
     private TodoDao todoDao;
 
-    public List<Integer> getDoneStatus(){
-        List<Integer> todolist = null;
-        try{
-            todolist = new ArrayList<Integer>();
-            Iterable<TodoItemEntity> todolistEn = todoDao.findAll();
-            for (TodoItemEntity todoentity : todolistEn) {
-                TodoItemBean todobean = new TodoItemBean();
-                todobean = convertEntityToBean(todoentity);
-                todolist.add(todobean.isDone());
-            }
-        }catch (Exception e){
-            throw e;
-        }
-        return todolist;
-    }
-
     public List<TodoItemBean> findAll(){
         List<TodoItemBean> todolist = null;
 
