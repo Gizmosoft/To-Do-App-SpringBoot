@@ -17,4 +17,7 @@ public class TodoServiceImpl implements TodoService{
         return todoDaoWrapper.findAll();
     }
 
+    public void addItemsToList(TodoItemBean itemBean){
+        todoDaoWrapper.addItemsToList(itemBean);
+    }
 }

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,6 +26,22 @@ public class TodoController {
     public ResponseEntity<List<TodoItemBean>> getTodoListDetails() throws Exception{
         List<TodoItemBean> listTodo = new ArrayList<TodoItemBean>(todoServiceImpl.getAllItem());
         return new ResponseEntity<List<TodoItemBean>>(listTodo, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/addPage")
+    public ModelAndView showAddPage(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("form.html");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView addItems(@RequestParam("itemObj") TodoItemBean itemBean){
+        ModelAndView modelAndView = new ModelAndView();
+        todoServiceImpl.addItemsToList(itemBean);
+        modelAndView.setViewName("index.html");
+        modelAndView.addObject("itemObj", new TodoItemBean());
+        return modelAndView;
     }
 
     @RequestMapping(value = "/")

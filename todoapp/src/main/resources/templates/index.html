@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.thymeleaf.org ">
 <head>
     <meta charset="UTF-8">
@@ -8,8 +9,13 @@
 <body>
 <center>
     <h1>Welcome to the To-Do App!</h1>
-    <h4>Your Todo List for the day is below...</h4>
+    <div class="input">
+        <form action="/addPage">
+            <button type="submit">Add Items</button>
+        </form>
+    </div>
 </center>
+<h4>Your Todo List for the day is below...</h4><br>
 <!--    Displaying the data from the database in a Tabular form  -->
     <table>
         <tr th:each="l : ${list}">

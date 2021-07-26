@@ -12,16 +12,14 @@ public class TodoItemEntity {
     private int id;
     @NotNull
     private String title;
-    private int done;
 
     public TodoItemEntity(){
 
     }
 
-    public TodoItemEntity(int id, String title, int done) {
+    public TodoItemEntity(int id, String title) {
         this.id = id;
         this.title = title;
-        this.done = done;
     }
 
     public int getId() {
@@ -40,10 +38,4 @@ public class TodoItemEntity {
         this.title = title;
     }
 
-    public int isDone() {
-        return done;
-    }
-
-    public void setDone(int done) { this.done = done;
-    }
 }

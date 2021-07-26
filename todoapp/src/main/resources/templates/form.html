@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml" lang="en"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Items | To-Do App</title>
+</head>
+<body>
+  <form:form modelAttribute="itemObj" action="/" method="get">
+    List Item:<input type="text" name="itemObj" /><br>
+      <button type="submit">Add</button>
+<!--    <input type="submit" value="Add"/>-->
+  </form:form>
+
+</body>
+</html>

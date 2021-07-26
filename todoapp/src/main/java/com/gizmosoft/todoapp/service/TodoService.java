@@ -7,4 +7,6 @@ import java.util.Collection;
 public interface TodoService {
 
     Collection<TodoItemBean> getAllItem();
+
+    public void addItemsToList(TodoItemBean itemBean);
 }

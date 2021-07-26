@@ -33,6 +33,15 @@ public class TodoDaoWrapper{
         return todolist;
     }
 
+    public void addItemsToList(TodoItemBean itemBean){
+        TodoItemEntity itemEntityBean = convertBeanToEntity(itemBean);
+        try{
+            itemEntityBean = todoDao.save(itemEntityBean);
+        }catch (Exception e){
+            throw e;
+        }
+    }
+
     public static TodoItemBean convertEntityToBean(TodoItemEntity entity) {
         TodoItemBean bean = new TodoItemBean();
         BeanUtils.copyProperties(entity, bean);
