@@ -5,13 +5,12 @@ import com.gizmosoft.todoapp.service.TodoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,15 +34,8 @@ public class TodoController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView addItems(@RequestParam("itemObj") TodoItemBean itemBean){
-        ModelAndView modelAndView = new ModelAndView();
-        todoServiceImpl.addItemsToList(itemBean);
-        modelAndView.setViewName("index.html");
-        modelAndView.addObject("itemObj", new TodoItemBean());
-        return modelAndView;
-    }
 
+    // The below function shows the to-do list and provides a button to add new items to the list
     @RequestMapping(value = "/")
     public ModelAndView listOfTodo(){
         ModelAndView modelAndView = new ModelAndView();
