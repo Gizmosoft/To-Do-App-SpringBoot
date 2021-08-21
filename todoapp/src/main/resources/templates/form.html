@@ -7,10 +7,12 @@ xsi:schemaLocation="http://www.thymeleaf.org ">
     <title>Add Items | To-Do App</title>
 </head>
 <body>
-  <form:form action="/">
+  <form:form action="/addToList" method="post" modelAttribute="item">
     List Item:<input type="text"/><br>
       <button type="submit">Add</button>
+      <br>
   </form:form>
+  <a href="/">Home</a>
 
 </body>
 </html>

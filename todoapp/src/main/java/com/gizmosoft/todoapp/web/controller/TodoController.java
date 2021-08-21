@@ -34,10 +34,17 @@ public class TodoController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/addToList", method=RequestMethod.POST)
+    public ModelAndView addListItem(@Valid @ModelAttribute("item")TodoItemBean todoItemBean){
+        ModelAndView modelAndView = new ModelAndView();
+        todoServiceImpl.addItemsToList(todoItemBean);
+        modelAndView.setViewName("index.html");
+        return modelAndView;
+    }
 
     // The below function shows the to-do list and provides a button to add new items to the list
     @RequestMapping(value = "/")
-    public ModelAndView listOfTodo(){
+    public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
         List<TodoItemBean> listTodo = new ArrayList<TodoItemBean>(todoServiceImpl.getAllItem());
         modelAndView.addObject("list",listTodo);
