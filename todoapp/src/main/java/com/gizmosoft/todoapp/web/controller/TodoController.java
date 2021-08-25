@@ -5,8 +5,8 @@ import com.gizmosoft.todoapp.service.TodoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,32 +14,33 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@Controller
 //@RequestMapping(value = "/todo")
 public class TodoController {
 
     @Autowired
     private TodoServiceImpl todoServiceImpl;
 
+    // Gets list - not being used in the project currently
     @RequestMapping(value = "/getList", method = RequestMethod.GET)
     public ResponseEntity<List<TodoItemBean>> getTodoListDetails() throws Exception{
         List<TodoItemBean> listTodo = new ArrayList<TodoItemBean>(todoServiceImpl.getAllItem());
         return new ResponseEntity<List<TodoItemBean>>(listTodo, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/addPage")
+    // Below function redirects to the form.html page to add items to the list
+    @RequestMapping(value = "/addItemForm")
     public ModelAndView showAddPage(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("form.html");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/addToList", method=RequestMethod.POST)
-    public ModelAndView addListItem(@Valid @ModelAttribute("item")TodoItemBean todoItemBean){
-        ModelAndView modelAndView = new ModelAndView();
+    @PostMapping("/saveItem")
+    public String saveItem(@ModelAttribute("newItem") TodoItemBean todoItemBean){
+        // save added item to the DB
         todoServiceImpl.addItemsToList(todoItemBean);
-        modelAndView.setViewName("index.html");
-        return modelAndView;
+        return "redirect:/";
     }
 
     // The below function shows the to-do list and provides a button to add new items to the list

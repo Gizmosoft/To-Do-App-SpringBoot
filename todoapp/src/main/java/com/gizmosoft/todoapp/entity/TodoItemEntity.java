@@ -10,7 +10,7 @@ public class TodoItemEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
-    @NotNull
+
     private String title;
 
     public TodoItemEntity(){
