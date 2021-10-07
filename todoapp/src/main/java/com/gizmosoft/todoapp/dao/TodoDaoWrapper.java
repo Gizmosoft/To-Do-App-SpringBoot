@@ -36,7 +36,7 @@ public class TodoDaoWrapper{
     public void addItemsToList(TodoItemBean itemBean){
         TodoItemEntity itemEntityBean = convertBeanToEntity(itemBean);
         try{
-            itemEntityBean = todoDao.save(itemEntityBean);
+            todoDao.save(itemEntityBean);
         }catch (Exception e){
             throw e;
         }

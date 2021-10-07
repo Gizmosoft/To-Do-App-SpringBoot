@@ -36,9 +36,11 @@ public class TodoController {
         return modelAndView;
     }
 
-    @PostMapping("/saveItem")
-    public String saveItem(@ModelAttribute("newItem") TodoItemBean todoItemBean){
+    @PostMapping("/addItemForm")
+    public String saveItem(@ModelAttribute TodoItemBean todoItemBean, Model model){
         // save added item to the DB
+        System.out.println(todoItemBean.getTitle() + " " + todoItemBean.getTitle());
+        model.addAttribute("todoItemBean", todoItemBean);
         todoServiceImpl.addItemsToList(todoItemBean);
         return "redirect:/";
     }

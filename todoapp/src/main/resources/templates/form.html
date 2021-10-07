@@ -7,7 +7,7 @@ xsi:schemaLocation="http://www.thymeleaf.org ">
     <title>Add Items | To-Do App</title>
 </head>
 <body>
-  <form action="#" th:action="@{/saveItem}" th:object="${newItem}" method="post">
+  <form action="#" th:action="@{/addItemForm}" th:object="${newItem}" method="post">
       <input type="text" field="*{title}" placeholder="Add a new item">
       <button type="submit">Add Item</button>
   </form>
