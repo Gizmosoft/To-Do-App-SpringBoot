@@ -10,7 +10,6 @@
 <center>
     <h1>Welcome to the To-Do App!</h1>
     <div class="input">
-<!--        <a th:href="@{/addItemForm}">Add Items</a>-->
         <form action="/addItemForm">
             <button type="submit">Add Items</button>
         </form>
@@ -20,8 +19,8 @@
 <!--    Displaying the data from the database in a Tabular form  -->
     <table>
         <tr th:each="l : ${list}">
-            <td th:text="${l.id}"></td>
             <td th:text="${l.title}"></td>
+            <td th:if="${l.status=='done'}" th:text="${l.status}"></td>
         </tr>
     </table>
 

@@ -33,10 +33,13 @@ public class TodoDaoWrapper{
         return todolist;
     }
 
-    public void addItemsToList(TodoItemBean itemBean){
-        TodoItemEntity itemEntityBean = convertBeanToEntity(itemBean);
+    public void addItemsToList(TodoItemBean todoItemBean){
+        System.out.println(todoItemBean.getTitle() + " in DAO.");
+        TodoItemEntity todoItemEntity = convertBeanToEntity(todoItemBean);
         try{
-            todoDao.save(itemEntityBean);
+            System.out.println(todoItemEntity.getTitle() + " in DAO - After conversion to entity.");
+            todoDao.saveAndFlush(todoItemEntity);
+            System.out.println(todoItemEntity.getTitle() + " " + todoItemEntity.getId() + " in DAO - After adding to Db.");
         }catch (Exception e){
             throw e;
         }

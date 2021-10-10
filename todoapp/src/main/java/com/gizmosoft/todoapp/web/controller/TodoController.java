@@ -1,12 +1,14 @@
 package com.gizmosoft.todoapp.web.controller;
 
 import com.gizmosoft.todoapp.bean.TodoItemBean;
+import com.gizmosoft.todoapp.entity.TodoItemEntity;
 import com.gizmosoft.todoapp.service.TodoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-//@RequestMapping(value = "/todo")
 public class TodoController {
 
     @Autowired
@@ -36,12 +37,16 @@ public class TodoController {
         return modelAndView;
     }
 
-    @PostMapping("/addItemForm")
-    public String saveItem(@ModelAttribute TodoItemBean todoItemBean, Model model){
-        // save added item to the DB
-        System.out.println(todoItemBean.getTitle() + " " + todoItemBean.getTitle());
-        model.addAttribute("todoItemBean", todoItemBean);
+   // @PostMapping("/saveItem")
+    @RequestMapping(value = "/saveItem", method = RequestMethod.POST)
+    public String addNewItem(@ModelAttribute("todoItemBean")TodoItemBean todoItemBean){
+//        if(result.hasErrors())
+//            return "/addItemForm";
+        todoItemBean.setStatus("pending");
+        System.out.println(todoItemBean + " in Controller.");
+        // save to DB
         todoServiceImpl.addItemsToList(todoItemBean);
+
         return "redirect:/";
     }
 
@@ -54,15 +59,4 @@ public class TodoController {
         modelAndView.setViewName("index.html");
         return modelAndView;
     }
-
-
-
-//    @RequestMapping(value="/")
-//    public ModelAndView getIndex() {
-//        System.out.println("Looking in the index controller.........");
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("index.html");
-//        return modelAndView;
-//    }
-
 }

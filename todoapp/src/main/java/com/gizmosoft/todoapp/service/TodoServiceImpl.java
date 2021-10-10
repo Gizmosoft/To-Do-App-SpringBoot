@@ -2,6 +2,7 @@ package com.gizmosoft.todoapp.service;
 
 import com.gizmosoft.todoapp.bean.TodoItemBean;
 import com.gizmosoft.todoapp.dao.TodoDaoWrapper;
+import com.gizmosoft.todoapp.entity.TodoItemEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,8 @@ public class TodoServiceImpl implements TodoService{
         return todoDaoWrapper.findAll();
     }
 
-    public void addItemsToList(TodoItemBean itemBean){
-        todoDaoWrapper.addItemsToList(itemBean);
+    public void addItemsToList(TodoItemBean todoItemBean){
+        System.out.println(todoItemBean.getTitle() + " in Service.");
+        todoDaoWrapper.addItemsToList(todoItemBean);
     }
 }

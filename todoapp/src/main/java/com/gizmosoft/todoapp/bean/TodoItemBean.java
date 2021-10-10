@@ -1,14 +1,23 @@
 package com.gizmosoft.todoapp.bean;
 
 public class TodoItemBean {
-    private int id;
+    private Long id;
     private String title;
+    private String status;
 
-    public int getId() {
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -20,11 +29,13 @@ public class TodoItemBean {
         this.title = title;
     }
 
+
     @Override
     public String toString() {
         return "TodoItemBean{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 }
