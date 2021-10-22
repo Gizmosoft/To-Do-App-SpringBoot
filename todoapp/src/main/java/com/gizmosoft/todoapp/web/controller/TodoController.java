@@ -50,6 +50,15 @@ public class TodoController {
         return "redirect:/";
     }
 
+    // Remove Item Functionality
+    @RequestMapping(value = "/deleteItem", method = RequestMethod.POST)
+    public String removeItem(@ModelAttribute("todoItemBean")TodoItemBean todoItemBean) throws Exception {
+        System.out.println(todoItemBean);
+        TodoItemBean itemBean = todoServiceImpl.getOneItem(todoItemBean.getId());
+        todoServiceImpl.deleteItem(itemBean.getId());
+        return "redirect:/";
+    }
+
     // The below function shows the to-do list and provides a button to add new items to the list
     @RequestMapping(value = "/")
     public ModelAndView home(){

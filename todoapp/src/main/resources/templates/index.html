@@ -18,10 +18,13 @@
 <h4>Your Todo List for the day is below...</h4><br>
 <!--    Displaying the data from the database in a Tabular form  -->
     <table>
+        <form action="deleteItem" method="post">
         <tr th:each="l : ${list}">
             <td th:text="${l.title}"></td>
             <td th:if="${l.status=='done'}" th:text="${l.status}"></td>
+            <td><input type="submit" value="Remove"></td>
         </tr>
+        </form>
     </table>
 
 </body>

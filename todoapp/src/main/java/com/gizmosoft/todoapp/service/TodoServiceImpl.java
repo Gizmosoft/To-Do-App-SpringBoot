@@ -22,4 +22,16 @@ public class TodoServiceImpl implements TodoService{
         System.out.println(todoItemBean.getTitle() + " in Service.");
         todoDaoWrapper.addItemsToList(todoItemBean);
     }
+
+    public TodoItemBean getOneItem(Integer id) throws Exception{
+        TodoItemBean todoItemBean = todoDaoWrapper.getOneItem(id);
+        if(todoItemBean == null){
+            throw new Exception();
+        }
+        return todoItemBean;
+    }
+
+    public void deleteItem(Integer id){
+        todoDaoWrapper.deleteItem(id);
+    }
 }

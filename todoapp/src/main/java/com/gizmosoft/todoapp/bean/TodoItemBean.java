@@ -1,7 +1,7 @@
 package com.gizmosoft.todoapp.bean;
 
 public class TodoItemBean {
-    private Long id;
+    private Integer id;
     private String title;
     private String status;
 
@@ -13,11 +13,11 @@ public class TodoItemBean {
         this.status = status;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

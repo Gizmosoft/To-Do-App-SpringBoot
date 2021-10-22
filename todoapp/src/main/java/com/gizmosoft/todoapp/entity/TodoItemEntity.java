@@ -11,7 +11,7 @@ public class TodoItemEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String title;
 
@@ -22,16 +22,16 @@ public class TodoItemEntity {
 
     }
 
-    public TodoItemEntity(Long id, String title) {
+    public TodoItemEntity(Integer id, String title) {
         this.id = id;
         this.title = title;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class TodoDaoWrapper{
@@ -45,7 +46,35 @@ public class TodoDaoWrapper{
         }
     }
 
+    public TodoItemBean getOneItem(Integer id){
+        TodoItemBean todoItemBean = null;
+
+        try{
+            Optional<TodoItemEntity> todoItemEntity = todoDao.findById(id);
+            if (todoItemEntity!= null){
+                todoItemBean = convertEntityToBean2(todoItemEntity);
+            }
+        }catch (Exception e){
+            throw e;
+        }
+        return todoItemBean;
+    }
+
+    // delete functionality
+    public void deleteItem(Integer id){
+        TodoItemEntity todoItemEntity = todoDao.getById(id);
+        System.out.println(todoItemEntity.getId() + " is being deleted.");
+        todoDao.delete(todoItemEntity);
+    }
+
+    // Conversion Methods
     public static TodoItemBean convertEntityToBean(TodoItemEntity entity) {
+        TodoItemBean bean = new TodoItemBean();
+        BeanUtils.copyProperties(entity, bean);
+        return bean;
+    }
+
+    public static TodoItemBean convertEntityToBean2(Optional<TodoItemEntity> entity) {
         TodoItemBean bean = new TodoItemBean();
         BeanUtils.copyProperties(entity, bean);
         return bean;
